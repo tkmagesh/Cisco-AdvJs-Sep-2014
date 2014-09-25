@@ -59,3 +59,14 @@ var productComparerByValue = function(p1,p2){
 console.log("After sorting by product value")
 sort(products,productComparerByValue);
 console.table(products);
+
+var inverseComparer = function(comparerFn){
+    return function(p1,p2){
+        return comparerFn(p1,p2) * -1;
+    }
+}
+
+var inverseProductComparerByValue = inverseComparer(productComparerByValue);
+sort(products,inverseProductComparerByValue);
+console.log("After sorting by product value - descending");
+console.table(products);
