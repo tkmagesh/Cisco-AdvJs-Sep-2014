@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Intro</title>
+    <style>
+    .highlight{
+        border : 2px solid red;
+    }
+    </style>
+    <script src="jquery-2.1.1.js"></script>
+    <script>
+        (function(){
+            function doGreet(){
+                var firstName = $("#txtFirstName").val(),
+                    lastName = $("#txtLastName").val()
+                    msg = "Hi " + firstName + " " + lastName + ", Have a nice day!";
+                $("#divMessage").html(msg);
+            }
+
+            //$(document).ready(init);
+            $(function (){
+                $("#btnGreet").click(doGreet);
+            });
+        })();
+    </script>
+</head>
+<body>
+    First Name : <input type="text" name="" id="txtFirstName" class="nameBox">
+    <br>
+    Last Name : <input type="text" name="" id="txtLastName" class="nameBox">
+    <br>
+    Age : <input type="text" name="" id="txtAge" class="numberBox">
+    <br>
+    <input type="button" value="Greet" id="btnGreet">
+    <input type="reset" value="Reset">
+    <div id="divMessage"></div>
+</body>
+</html>

@@ -100,3 +100,64 @@ all ( do all items satisfy the given criteria)
 
 groupBy
 */
+
+
+var min = function(list,selectorFn){
+    var result = selectorFn(list[0]);
+    for(var i=1;i<list.length;i++){
+        var itemValue= selectorFn(list[i]);
+        if (itemValue < result)
+            result = itemValue;
+    }
+    return result;
+}
+
+var costSelectorFn = function(p){
+    return p.cost;
+}
+var minCost = min(products,costSelectorFn);
+console.log("Min cost = ", minCost);
+
+var max = function(list,selectorFn){
+    var result = selectorFn(list[0]);
+    for(var i=1;i<list.length;i++){
+        var itemValue= selectorFn(list[i]);
+        if (itemValue > result)
+            result = itemValue;
+    }
+    return result;
+}
+
+var sum = function(list,selectorFn){
+    var result = 0;
+    for(var i=0;i<list.length;i++){
+        var itemValue= selectorFn(list[i]);
+        result += itemValue;
+    }
+    return result;
+}
+
+var any = function(list,criteriaFn){
+    for(var i=0;i<list.length;i++)
+        if (criteriaFn(list[i]))
+            return true;
+    return false;
+}
+
+var all = function(list,criteriaFn){
+    for(var i=0;i<list.length;i++)
+        if (!criteriaFn(list[i]))
+            return false;
+    return true;
+}
+
+var groupBy = function(list,selectorFn){
+    var result = {};
+    for(var i=0;i<list.length;i++){
+        var key = selectorFn(list[i]);
+        if (typeof result[key] === "undefined")
+            result[key] = [];
+        result[key].push(list[i]);
+    }
+    return result;
+}
