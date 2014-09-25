@@ -70,3 +70,33 @@ var inverseProductComparerByValue = inverseComparer(productComparerByValue);
 sort(products,inverseProductComparerByValue);
 console.log("After sorting by product value - descending");
 console.table(products);
+
+var filter = function(list,criteriaFn){
+    var result = [];
+    for(var i=0;i<list.length;i++)
+        if (criteriaFn(list[i]))
+            result.push(list[i]);
+    return result;
+}
+
+var costlyProductCriteria = function(p){
+    return p.cost > 50;
+}
+var costlyProducts = filter(products,costlyProductCriteria);
+console.log("Filter - costly products");
+console.table(costlyProducts);
+
+/*
+min
+max
+sum
+avg
+countBy
+
+reduce
+
+any ( do atleast 1 item satisfies the given criteria?)
+all ( do all items satisfy the given criteria)
+
+groupBy
+*/
