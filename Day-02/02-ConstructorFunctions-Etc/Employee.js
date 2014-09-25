@@ -11,6 +11,7 @@ the resultant object should expose the following attributes
 
 
 function SalaryCalculator(basic, hra, da, tax){
+    var x = 100;
     this.basic = basic;
     this.hra = hra;
     this.da = da;
